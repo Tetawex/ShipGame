@@ -46,10 +46,32 @@ public class Draggable : MonoBehaviour
 
         if (this.isDragged == false)
         {
-            var result = Physics2D.OverlapCircle(transform.position, SNAP_RANGE);
-            var nearestPoint = player.transform.position.NearestOf
-            //var closestSlot = gameObject.
-            //snapToSlot
+            float closestSqrDistance = Mathf.Infinity;
+            DraggableSlot? closestSlot = null;
+            
+            var overlaps = Physics2D.OverlapCircleAll(transform.position, SNAP_RANGE);
+
+            foreach (var overlap in overlaps)
+            {
+                var slot = overlap.GetComponent<DraggableSlot>();
+                if (slot != null)
+                {
+                    var sqrDistance = (transform.position - overlap.transform.position).sqrMagnitude;
+                    if (sqrDistance < closestSqrDistance)
+                    {
+                        closestSlot = slot;
+                        closestSqrDistance = sqrDistance;
+                    }
+                }
+            }
+
+            if (closestSlot != null)
+            {
+                SnapToSlot(closestSlot);
+            } else
+            {
+                SnapToSlot(null);
+            }
         }
     }
 
