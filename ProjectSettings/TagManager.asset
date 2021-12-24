@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ShipBuilder
+    uniqueID: 1280343735
+    locked: 0
+  - name: ShipPart
+    uniqueID: 2570009663
+    locked: 0

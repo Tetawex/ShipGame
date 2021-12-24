@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a113e16426fe49d46b9af1611788c751, type: 3}
   m_Name: HullShipPart
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 100
   shotAD: 0
   shotAS: 0
   ramAD: 0
   ramAS: 0
+  name: Hull
+  description: That thing was too big to be called a ship part. Too big, too thick,
+    too heavy, and too rough, it's more like a large hunk of iron...
