@@ -18,6 +18,27 @@ public class Draggable : MonoBehaviour
         previousPosition = transform.position;
     }
 
+    public void OnMouseDrag()
+    {
+        if (!isDragged)
+        {
+            return;
+        }
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
+    }
+
+    public void OnMouseDown()
+    {
+        setDragged(true);
+    }
+
+    public void OnMouseUp()
+    {
+        setDragged(false);
+    }
+
     public void SnapToSlot(DraggableSlot? slot)
     {
         var slotToSnapTo = slot ?? previousSlot;
@@ -32,7 +53,8 @@ public class Draggable : MonoBehaviour
 
         if (didAttach)
         {
-            transform.position = slotToSnapTo.GetPosition();
+            var slotPosition = slotToSnapTo.GetPosition();
+            transform.position = new Vector3(slotPosition.x, slotPosition.y, transform.position.z);
             // transform.SetParent(slotToSnapTo.gameObject.transform);
 
             previousSlot = slotToSnapTo;
@@ -42,23 +64,13 @@ public class Draggable : MonoBehaviour
             transform.position = previousPosition;
         }
     }
-    public void OnMouseDrag()
-    {
-        //if (!isDragged)
-        //{
-        //    return;
-        //}
-
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
-    }
 
     private void setDragged(bool isDragged)
     {
         this.isDragged = isDragged;
 
         // Ugly way to display on top of other parts
-        this.transform.position += new Vector3(0f, 0f, (this.isDragged ? -1 : 1) * 0.000001f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, (this.isDragged ? -1 : 1) * 0.000001f);
 
         if (this.isDragged)
         {
@@ -95,15 +107,5 @@ public class Draggable : MonoBehaviour
                 SnapToSlot(null);
             }
         }
-    }
-
-    public void OnMouseDown()
-    {
-        setDragged(true);
-    }
-
-    public void OnMouseUp()
-    {
-        setDragged(false);
     }
 }
