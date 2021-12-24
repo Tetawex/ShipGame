@@ -7,36 +7,49 @@ public class Draggable : MonoBehaviour
 {
     public static float SNAP_RANGE = 0.5f;
 
-    private DraggableSlot? previousSlot = null;
+    private Vector3 previousPosition;
+    private DraggableSlot? previousSlot;
 
     // TODO: Refactor to enum state, add a state for animated snapping
     private bool isDragged = false;
 
-    void Start()
+    public void Start()
     {
-
-    }
-
-    void Update()
-    {
-
+        previousPosition = transform.position;
     }
 
     public void SnapToSlot(DraggableSlot? slot)
     {
         var slotToSnapTo = slot ?? previousSlot;
-        if (slotToSnapTo != null)
+
+        if (slotToSnapTo == null)
         {
-            transform.position = slot.GetPosition();
+            transform.position = previousPosition;
+            return;
+        }
+
+        var didAttach = slotToSnapTo.AttachDraggable(this);
+
+        if (didAttach)
+        {
+            transform.position = slotToSnapTo.GetPosition();
+            // transform.SetParent(slotToSnapTo.gameObject.transform);
+
+            previousSlot = slotToSnapTo;
+        }
+        else
+        {
+            transform.position = previousPosition;
         }
     }
-
     public void OnMouseDrag()
     {
-        setDragged(true);
+        //if (!isDragged)
+        //{
+        //    return;
+        //}
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
     }
 
@@ -44,11 +57,19 @@ public class Draggable : MonoBehaviour
     {
         this.isDragged = isDragged;
 
-        if (this.isDragged == false)
+        // Ugly way to display on top of other parts
+        this.transform.position += new Vector3(0f, 0f, (this.isDragged ? -1 : 1) * 0.000001f);
+
+        if (this.isDragged)
+        {
+            previousPosition = transform.position;
+            previousSlot?.DetachDraggable(this);
+        }
+        else
         {
             float closestSqrDistance = Mathf.Infinity;
             DraggableSlot? closestSlot = null;
-            
+
             var overlaps = Physics2D.OverlapCircleAll(transform.position, SNAP_RANGE);
 
             foreach (var overlap in overlaps)
@@ -68,7 +89,8 @@ public class Draggable : MonoBehaviour
             if (closestSlot != null)
             {
                 SnapToSlot(closestSlot);
-            } else
+            }
+            else
             {
                 SnapToSlot(null);
             }
@@ -81,11 +103,6 @@ public class Draggable : MonoBehaviour
     }
 
     public void OnMouseUp()
-    {
-        setDragged(false);
-    }
-
-    public void OnMouseExit()
     {
         setDragged(false);
     }
