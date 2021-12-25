@@ -8,6 +8,10 @@ public class DraggableSlot : MonoBehaviour
 {
     private Draggable? attachedDraggable;
 
+    public Draggable? GetDraggable()
+    {
+        return attachedDraggable;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         eventData.pointerDrag = null;

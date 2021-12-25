@@ -20,6 +20,9 @@ public class ShipPart : ScriptableObject, IShipPart
     [SerializeField]
     private string description = "";
 
+    [SerializeField]
+    public GameObject Prefab;
+
     public ShipPart() { }
 
     public float HP => hp;
@@ -30,6 +33,36 @@ public class ShipPart : ScriptableObject, IShipPart
 
     public string Name => name;
     public string Description => description;
+
+
+    public GameObject ToModelPart(GameObject parent)
+    {
+        var instance = Instantiate(
+            Prefab,
+            parent.transform.position + Prefab.transform.position,
+            Quaternion.identity,
+            parent.transform);
+
+        var shipPartHolder = instance.AddComponent<ShipPartHolder>();
+        shipPartHolder.ShipPart = this;
+
+        return instance;
+    }
+    public GameObject ToBuilderPart(GameObject parent)
+    {
+        var instance = ToModelPart(parent);
+
+        instance.AddComponent<Draggable>();
+        instance.AddComponent<BuilderPart>();
+        instance.AddComponent<BoxCollider2D>();
+
+        return instance;
+    }
+    public GameObject ToFighterPart(GameObject parent)
+    {
+        var instance = ToModelPart(parent);
+        return instance;
+    }
 }
 
 /*
