@@ -7,9 +7,12 @@ public class ShipSceneController : MonoBehaviour
     // Boo singletons bad
     public static ShipSceneController Instance;
 
-    private ShipModel shipModel;
+    [SerializeField]
+    public List<ShipPart> initialParts;
+
+    private Ship shipModel;
     private BuilderShipController builderShipController;
-    private FightShipController fightShipController;
+    private FighterShipController fighterShipController;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +20,20 @@ public class ShipSceneController : MonoBehaviour
         Instance = this;
 
         builderShipController = GetComponentInChildren<BuilderShipController>();
-        fightShipController = GetComponentInChildren<FightShipController>();
+        fighterShipController = GetComponentInChildren<FighterShipController>();
 
-        shipModel = GetComponentInChildren<ShipModel>();
-        shipModel.gameObject.SetActive(false);
+        shipModel = new Ship(new ShipPart[ShipConstants.SHIP_GRID_WIDTH, ShipConstants.SHIP_GRID_HEIGHT]);
+        builderShipController.ResetToShipModel(shipModel);
+
+        for (int i = 0; i < initialParts.Count; i++)
+        {
+            var item = initialParts[i];
+            var go = builderShipController.ShipPartToGameObject(
+                item,
+                new Vector3(1f + (((float)i) * 1.5f), 0f)
+            );
+        }
+
     }
 
     private void OnDestroy()
@@ -28,12 +41,23 @@ public class ShipSceneController : MonoBehaviour
         Instance = null;
     }
 
-    public void WriteShipModelToBuilder()
+    public void WriteShipModelToFighter()
     {
-        builderShipController.InitializeFromShipModel(shipModel.gameObject);
+        //builderShipController.InitializeFromShipModel(shipModel);
+        shipModel = builderShipController.BuildShipModel();
+        fighterShipController.ResetToShipModel(shipModel);
     }
 
-    public void SaveAndWriteShipModelToFighter()
+    public void WriteShipModelToBuilder()
+    {
+        shipModel = fighterShipController.BuildShipModel();
+        builderShipController.ResetToShipModel(shipModel);
+    }
+}
+
+/**
+ * 
+ * public void SaveAndWriteShipModelToFighter()
     {
         var builderController = GetComponentInChildren<BuilderShipController>();
 
@@ -61,4 +85,4 @@ public class ShipSceneController : MonoBehaviour
 
         fightShipController.InitializeFromShipModel(shipModel.gameObject);
     }
-}
+ */

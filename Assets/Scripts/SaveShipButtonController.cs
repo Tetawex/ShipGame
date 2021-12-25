@@ -8,6 +8,6 @@ public class SaveShipButtonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(() => ShipSceneController.Instance.WriteShipModelToBuilder());
+        GetComponent<Button>().onClick.AddListener(() => ShipSceneController.Instance.WriteShipModelToFighter());
     }
 }

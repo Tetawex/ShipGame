@@ -7,7 +7,7 @@ public class Draggable : MonoBehaviour
 {
     public static float SNAP_RANGE = 0.5f;
 
-    private Vector3 previousPosition;
+    public Vector3 previousPosition;
     private DraggableSlot? previousSlot;
 
     // TODO: Refactor to enum state, add a state for animated snapping
@@ -31,12 +31,12 @@ public class Draggable : MonoBehaviour
 
     public void OnMouseDown()
     {
-        setDragged(true);
+        SetDragged(true);
     }
 
     public void OnMouseUp()
     {
-        setDragged(false);
+        SetDragged(false);
     }
 
     public void SnapToSlot(DraggableSlot? slot)
@@ -65,7 +65,7 @@ public class Draggable : MonoBehaviour
         }
     }
 
-    private void setDragged(bool isDragged)
+    public void SetDragged(bool isDragged)
     {
         this.isDragged = isDragged;
 

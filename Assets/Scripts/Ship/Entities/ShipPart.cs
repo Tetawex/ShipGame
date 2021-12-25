@@ -35,7 +35,7 @@ public class ShipPart : ScriptableObject, IShipPart
     public string Description => description;
 
 
-    public GameObject ToModelPart(GameObject parent)
+    public GameObject ToGameObject(GameObject parent)
     {
         var instance = Instantiate(
             Prefab,
@@ -46,21 +46,6 @@ public class ShipPart : ScriptableObject, IShipPart
         var shipPartHolder = instance.AddComponent<ShipPartHolder>();
         shipPartHolder.ShipPart = this;
 
-        return instance;
-    }
-    public GameObject ToBuilderPart(GameObject parent)
-    {
-        var instance = ToModelPart(parent);
-
-        instance.AddComponent<Draggable>();
-        instance.AddComponent<BuilderPart>();
-        instance.AddComponent<BoxCollider2D>();
-
-        return instance;
-    }
-    public GameObject ToFighterPart(GameObject parent)
-    {
-        var instance = ToModelPart(parent);
         return instance;
     }
 }

@@ -19,3 +19,4 @@ MonoBehaviour:
   ramAS: 0
   name: Starting Cockpit
   description: Ain't much, but it's free
+  Prefab: {fileID: 9088667068514980537, guid: 87235cabe1143d2419a3779e0228781e, type: 3}
