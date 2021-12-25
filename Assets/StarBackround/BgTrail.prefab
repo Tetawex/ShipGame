@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6909895373599772014}
   - component: {fileID: 6909895373599772015}
+  - component: {fileID: 3838188634092857580}
   m_Layer: 0
   m_Name: BgTrail
   m_TagString: Untagged
@@ -71,14 +72,27 @@ SpriteRenderer:
   m_SortingLayerID: -1992867111
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5adfe68244df253409d182baf804dbd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1261029729db7554ab2753bcdbed3411, type: 3}
   m_Color: {r: 0.9215687, g: 0.9215687, b: 0.9215687, a: 0.59607846}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.01, y: 0.01}
+  m_Size: {x: 0.0625, y: 0.0625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3838188634092857580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909895373599772013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2def93f857cd47b4e810976d86325dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
