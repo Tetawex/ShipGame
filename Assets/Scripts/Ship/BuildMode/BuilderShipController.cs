@@ -15,7 +15,7 @@ public class BuilderShipController : GenericShipController
 
     void Start()
     {
-        resetGrid();
+        //resetGrid();
     }
 
     public override void BeforeReset()
