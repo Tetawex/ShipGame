@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db34c59aac67ad64082eba5ad45e2501, type: 3}
   m_Name: IntroSentences
   m_EditorClassIdentifier: 
-  Sentences: []
+  Sentences:
+  - Name: Dave
+    Text: 123131321
+    Options:
+    - Id: 0
+      Text: YESSSSS
+  - Name: You
+    Text: ????
+    Options:
+    - Id: 1
+      Text: Yeah...But

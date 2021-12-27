@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextShow : MonoBehaviour
+public class DialogueShow : MonoBehaviour
 {
     public Sentence dialogue;
 
     public void TriggerText ()
     {
-        FindObjectOfType<TextController>().StartDialogue();
+        FindObjectOfType<DialogueController>().StartDialogue();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextController : MonoBehaviour
+public class DialogueController : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
@@ -15,7 +15,7 @@ public class TextController : MonoBehaviour
 
     private void Start()
     {
-        StartDialogue();
+
     }
 
     public void StartDialogue()
