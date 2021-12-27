@@ -25,7 +25,7 @@ public class BuilderShipController : GenericShipController
 
     private void resetGrid()
     {
-        foreach(DraggableSlot slot in GetComponentsInParent<DraggableSlot>())
+        foreach(DraggableSlot slot in GetComponentsInChildren<DraggableSlot>())
         {
             Destroy(slot.gameObject);
         }
