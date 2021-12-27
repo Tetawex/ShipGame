@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TextShow : MonoBehaviour
 {
-    public TextOptions dialogue;
+    public Sentence dialogue;
 
     public void TriggerText ()
     {
-        FindObjectOfType<TextController>().StartDialogue(dialogue);
+        FindObjectOfType<TextController>().StartDialogue();
     }
 }

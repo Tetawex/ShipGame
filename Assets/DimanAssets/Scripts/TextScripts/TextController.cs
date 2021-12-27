@@ -6,51 +6,43 @@ using UnityEngine.UI;
 public class TextController : MonoBehaviour
 {
     public Text nameText;
-    public Text dialogueText; 
+    public Text dialogueText;
 
-    private Queue<string> sentences;
+    private Queue<Sentence> currentSentences;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    public SentenceData SentenceData;
+
+    private void Start()
     {
-        sentences = new Queue<string>();
+        StartDialogue();
     }
 
-    void Update()
+    public void StartDialogue()
     {
-        
-    }
-
-    public void StartDialogue(TextOptions dialogue)
-    {
-        nameText.text = dialogue.name;
-
-        sentences.Clear();
-
-        foreach (var sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
+        currentSentences = new Queue<Sentence>(SentenceData.Sentences);
         DisplayNextSentence();
+    }
+
+    public void EndDialogue()
+    {
+
     }
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (currentSentences.Count == 0)
         {
             EndDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
-
-        dialogueText.text = sentence;
+        DisplaySentence(currentSentences.Dequeue());
     }
 
-    public void EndDialogue ()
+    public void DisplaySentence(Sentence sentence)
     {
-
+        nameText.text = sentence.Name;
+        dialogueText.text = sentence.Text;
     }
 }
- 
