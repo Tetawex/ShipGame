@@ -9,12 +9,18 @@ public class GenericShipController : MonoBehaviour
         return Instantiate(gameObject, position, Quaternion.identity);
     }
 
+    public virtual void BeforeReset()
+    {
+    }
+
     public void ResetToShipModel(Ship shipModel)
     {
         foreach (var part in GetComponentsInChildren<ShipPartHolder>())
         {
             Destroy(part.gameObject);
         }
+
+        BeforeReset();
 
         for (int x = 0; x < ShipConstants.SHIP_GRID_WIDTH; x++)
         {

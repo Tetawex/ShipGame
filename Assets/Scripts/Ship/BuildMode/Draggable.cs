@@ -7,7 +7,8 @@ public class Draggable : MonoBehaviour
 {
     public static float SNAP_RANGE = 0.5f;
 
-    public Vector3 previousPosition;
+    public Vector3 fallbackLocalPosition = new Vector3(0f, -2f, 0f);
+    public Vector3 initialPosition;
     private DraggableSlot? previousSlot;
 
     // TODO: Refactor to enum state, add a state for animated snapping
@@ -15,7 +16,7 @@ public class Draggable : MonoBehaviour
 
     public void Start()
     {
-        previousPosition = transform.position;
+        initialPosition = transform.position;
     }
 
     public void OnMouseDrag()
@@ -41,17 +42,35 @@ public class Draggable : MonoBehaviour
 
     public void SnapToSlot(DraggableSlot? slot)
     {
-        var slotToSnapTo = slot ?? previousSlot;
+        Debug.Log("Snapping to "+ slot);
+        bool didAttach = tryAttach(slot);
+        if (didAttach)
+        {
+            return;
+        }
 
+        didAttach = tryAttach(previousSlot);
+        if (didAttach)
+        {
+            return;
+        }
+
+        //pizdec
+        if (!didAttach)
+        {
+            transform.position = initialPosition;
+        }
+    }
+
+    private bool tryAttach(DraggableSlot? slotToSnapTo) {
         if (slotToSnapTo == null)
         {
-            transform.position = previousPosition;
-            return;
+            return false;
         }
 
         var didAttach = slotToSnapTo.AttachDraggable(this);
 
-        if (didAttach)
+        if (didAttach) 
         {
             var slotPosition = slotToSnapTo.GetPosition();
             transform.position = new Vector3(slotPosition.x, slotPosition.y, transform.position.z);
@@ -59,10 +78,7 @@ public class Draggable : MonoBehaviour
 
             previousSlot = slotToSnapTo;
         }
-        else
-        {
-            transform.position = previousPosition;
-        }
+        return didAttach;
     }
 
     public void SetDragged(bool isDragged)
@@ -74,7 +90,7 @@ public class Draggable : MonoBehaviour
 
         if (this.isDragged)
         {
-            previousPosition = transform.position;
+            //previousPosition = transform.position;
             previousSlot?.DetachDraggable(this);
         }
         else

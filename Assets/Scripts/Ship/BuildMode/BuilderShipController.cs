@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BuilderShipController : GenericShipController
 {
+    public Draggable? draggableMutex = null;
+
     [SerializeField]
     public GameObject slotPrefab;
 
@@ -13,6 +15,20 @@ public class BuilderShipController : GenericShipController
 
     void Start()
     {
+        resetGrid();
+    }
+
+    public override void BeforeReset()
+    {
+        resetGrid();
+    }
+
+    private void resetGrid()
+    {
+        foreach(DraggableSlot slot in GetComponentsInParent<DraggableSlot>())
+        {
+            Destroy(slot.gameObject);
+        }
         for (int x = 0; x < ShipConstants.SHIP_GRID_WIDTH; x++)
         {
             for (int y = 0; y < ShipConstants.SHIP_GRID_HEIGHT; y++)
@@ -43,7 +59,7 @@ public class BuilderShipController : GenericShipController
         var boxCollider = instance.AddComponent<BoxCollider2D>();
         boxCollider.size = new Vector2(ShipConstants.SHIP_PART_SIZE, ShipConstants.SHIP_PART_SIZE);
 
-        draggable.previousPosition = instance.transform.position;
+        draggable.initialPosition = instance.transform.position;
         draggable.SetDragged(false);
 
         return instance;

@@ -14,7 +14,7 @@ public class DraggableSlot : MonoBehaviour
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        eventData.pointerDrag = null;
+        //eventData.pointerDrag = null;
     }
 
     public Vector3 GetPosition()
@@ -28,6 +28,7 @@ public class DraggableSlot : MonoBehaviour
      */
     public bool AttachDraggable(Draggable draggable)
     {
+        Debug.Log(attachedDraggable);
         if (attachedDraggable != null)
         {
             return false;
@@ -43,6 +44,9 @@ public class DraggableSlot : MonoBehaviour
     */
     public bool DetachDraggable(Draggable draggable)
     {
+        attachedDraggable = null;
+        return true;
+
         if (attachedDraggable == draggable)
         {
             attachedDraggable = null;

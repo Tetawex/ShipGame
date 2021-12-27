@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 24f92e3733061474a972318a737596a8, type: 2}
     - target: {fileID: 8423013215733420982, guid: 5baf4731a6ad6e040b3a3a669fa48092, type: 3}
       propertyPath: m_Name
-      value: ShipPart
+      value: CockpitShipPart
       objectReference: {fileID: 0}
     - target: {fileID: 8423013215733420983, guid: 5baf4731a6ad6e040b3a3a669fa48092, type: 3}
       propertyPath: m_RootOrder
@@ -63,5 +63,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bcca7e79735cc264090d550699b63f66, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3532038095165982105, guid: 5baf4731a6ad6e040b3a3a669fa48092, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5baf4731a6ad6e040b3a3a669fa48092, type: 3}
