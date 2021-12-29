@@ -9,8 +9,6 @@ public class CharacterSelectController : MonoBehaviour
     public List<CharacterData> CharacterDatas;
 
     public GameObject PilotDisplay;
-
-    [SerializeField]
     public GameObject AbilityDescription;
 
     private int CurrentCharacterIndex = 0;
@@ -23,10 +21,6 @@ public class CharacterSelectController : MonoBehaviour
     public void DisplayData(CharacterData data)
     {
         PilotDisplay.GetComponent<SpriteRenderer>().sprite = data.Sprite;
-    }
-
-    public void AbilityText(CharacterData data)
-    {
         AbilityDescription.GetComponent<Text>().text = data.Ability.ToString();
     }
 
@@ -44,25 +38,16 @@ public class CharacterSelectController : MonoBehaviour
         }
 
         DisplayData(CharacterDatas[CurrentCharacterIndex]);
-        AbilityText(CharacterDatas[CurrentCharacterIndex]);
     }
 
     public void DisplayNext()
     {
         DisplayAtIndex(CurrentCharacterIndex + 1);
-        AbilityText(CharacterDatas[CurrentCharacterIndex]);
     }
 
     public void DisplayPrevious()
     {
         DisplayAtIndex(CurrentCharacterIndex - 1);
-        AbilityText(CharacterDatas[CurrentCharacterIndex]);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
 
