@@ -4,7 +4,7 @@ using System.Collections;
 
 public class TrailSpawner : MonoBehaviour
 {
-    private Vector2 origin = new Vector2(0f, 10f);
+    private Vector2 origin = new Vector2(20f, 10f);
 
     public GameObject tPrefab;
 
@@ -24,15 +24,15 @@ public class TrailSpawner : MonoBehaviour
         if (elapsedTime >= 0.1f)
         {
             var go = Instantiate(tPrefab, transform);
-            var moveDown = go.GetComponent<MoveLeft>();
-            moveDown.speed += Random.Range(1f, 3f);
+            var moveLeft = go.GetComponent<MoveLeft>();
+            moveLeft.speed += Random.Range(1f, 3f);
             go.transform.localScale = new Vector3(
-                go.transform.localScale.x,
-                go.transform.localScale.y * Random.Range(2f, 8f),
+                go.transform.localScale.x * Random.Range(2f, 8f),
+                go.transform.localScale.y,
                 go.transform.localScale.z
             );
 
-            go.transform.position += new Vector3(Random.Range(-15f, 15f), 0f, 0f);
+            go.transform.position += new Vector3(0f, Random.Range(-10f, 10f), 0f);
         }
     }
 }

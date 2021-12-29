@@ -46,6 +46,9 @@ public class ShipSceneController : MonoBehaviour
         //builderShipController.InitializeFromShipModel(shipModel);
         shipModel = builderShipController.BuildShipModel();
         fighterShipController.ResetToShipModel(shipModel);
+
+        GetComponentInChildren<Projectile>().LaunchSelfAt(fighterShipController.transform.position);
+        fighterShipController.StartFight();
     }
 
     public void WriteShipModelToBuilder()
