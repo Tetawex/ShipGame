@@ -1,24 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelectController : MonoBehaviour
 {
     [SerializeField]
     public List<CharacterData> CharacterDatas;
 
-    public Vector3 PositionStart = GameObject.Find("StartPosition").transform.position;
+    public GameObject PilotDisplay;
+
+    [SerializeField]
+    public GameObject AbilityDescription;
+
+    private int CurrentCharacterIndex = 0;
 
     void Start()
     {
-        foreach (var pilot in CharacterDatas)
-        {
-            //Instantiate(pilot, PositionStart);
-        }
-
+        DisplayAtIndex(CurrentCharacterIndex);
     }   
 
-    
+    public void DisplayData(CharacterData data)
+    {
+        PilotDisplay.GetComponent<SpriteRenderer>().sprite = data.Sprite;
+    }
+
+    public void AbilityText(CharacterData data)
+    {
+        AbilityDescription.GetComponent<Text>().text = data.Ability.ToString();
+    }
+
+    public void DisplayAtIndex(int index)
+    {
+        CurrentCharacterIndex = index;
+
+        if (CurrentCharacterIndex >= CharacterDatas.Count)
+        {
+            CurrentCharacterIndex = 0;
+        }
+        else if (CurrentCharacterIndex < 0)
+        {
+            CurrentCharacterIndex = CharacterDatas.Count - 1;
+        }
+
+        DisplayData(CharacterDatas[CurrentCharacterIndex]);
+        AbilityText(CharacterDatas[CurrentCharacterIndex]);
+    }
+
+    public void DisplayNext()
+    {
+        DisplayAtIndex(CurrentCharacterIndex + 1);
+        AbilityText(CharacterDatas[CurrentCharacterIndex]);
+    }
+
+    public void DisplayPrevious()
+    {
+        DisplayAtIndex(CurrentCharacterIndex - 1);
+        AbilityText(CharacterDatas[CurrentCharacterIndex]);
+    }
 
     // Update is called once per frame
     void Update()
