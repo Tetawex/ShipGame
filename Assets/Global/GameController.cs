@@ -11,19 +11,29 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+    private static string MAIN_MENU_NAME = "Scenes/MainMenu";
     private static string BUILD_SCENE_NAME = "Scenes/BuildMode";
+    private static string FIGHT_SCENE_NAME = "Scenes/FightMode";
+
+    private string currentScene = "";
 
     public GameState currentState;
 
     public static Ship CurrentShip = null;
 
+    public void GoToMainMenu()  
+    {
+        currentState = GameState.BUILD_MODE;
+        SceneManager.LoadSceneAsync(BUILD_SCENE_NAME, LoadSceneMode.Single);
+    }
+
     public void GoToBuildMode()
     {
         currentState = GameState.BUILD_MODE;
-        SceneManager.LoadSceneAsync(BUILD_SCENE_NAME, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(BUILD_SCENE_NAME, LoadSceneMode.Single);
     }
 
-    public void GoToMainMenu()
+    public void GoToFightMode()
     {
         currentState = GameState.BUILD_MODE;
         SceneManager.UnloadSceneAsync(BUILD_SCENE_NAME);
@@ -32,6 +42,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         Instance = this;
         GoToBuildMode();
     }
