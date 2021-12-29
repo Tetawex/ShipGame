@@ -15,9 +15,9 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0, -Time.deltaTime * speed);
+        transform.position += new Vector3(-Time.deltaTime * speed, 0);
 
-        if (transform.position.y < -11f)
+        if (transform.position.x < -11f)
         {
             Destroy(gameObject);
         }
