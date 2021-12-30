@@ -7,16 +7,31 @@ public class IntroController : MonoBehaviour
     public GameObject Dialogue;
     private DialogueController dialogController;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         dialogController = Dialogue?.GetComponent<DialogueController>();
-
+        dialogController.OnDialogueOptionSelected += OnDialogueOptionSelected;
         dialogController.StartDialogue();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        dialogController.OnDialogueOptionSelected -= OnDialogueOptionSelected;
+    }
+
+    private void OnDialogueOptionSelected(DialogueOptionSelectedPayload payload)
+    {
+        if (payload.ResponseOptionId == ResponseOptionId.BAD)
+        {
+            Debug.Log("Some BAD Logic");
+        }
+        else if (payload.ResponseOptionId == ResponseOptionId.GOOD)
+        {
+            Debug.Log("Some GOOD Logic");
+        }
+        else if (payload.ResponseOptionId == ResponseOptionId.RANDOM)
+        {
+            Debug.Log("Some RANDOM Logic");
+        }
     }
 }

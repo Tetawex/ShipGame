@@ -1,7 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+public class DialogueOptionSelectedPayload
+{
+    public Sentence Sentence;
+    public ResponseOptionId ResponseOptionId;
+
+    public DialogueOptionSelectedPayload(Sentence sentence, ResponseOptionId responseOptionId)
+    {
+        this.Sentence = sentence;
+        this.ResponseOptionId = responseOptionId;
+    }
+}
 
 public class DialogueController : MonoBehaviour
 {
@@ -11,9 +24,11 @@ public class DialogueController : MonoBehaviour
     public Text Response2;
     public Text Response3;
     public List<Text> ResponseBoxes;
-    
+
+    public Action<DialogueOptionSelectedPayload> OnDialogueOptionSelected;
 
     private Queue<Sentence> currentSentences;
+    private Sentence currentSentence;
 
     [SerializeField]
     public SentenceData SentenceData;
@@ -45,8 +60,9 @@ public class DialogueController : MonoBehaviour
 
         var thisSentence = currentSentences.Dequeue();
 
-        DisplayResponse(thisSentence.Responses);
+        currentSentence = thisSentence;
 
+        DisplayResponse(thisSentence.Responses);
         DisplaySentence(thisSentence);
     }
 
@@ -71,5 +87,18 @@ public class DialogueController : MonoBehaviour
                 ResponseBoxes[i].text = responses[i].Text;
             }
         }
+    }
+
+    public void OnButton1Press()
+    {
+        OnDialogueOptionSelected(new DialogueOptionSelectedPayload(currentSentence, currentSentence.Responses[0].Id));
+    }
+    public void OnButton2Press()
+    {
+        OnDialogueOptionSelected(new DialogueOptionSelectedPayload(currentSentence, currentSentence.Responses[1].Id));
+    }
+    public void OnButton3Press()
+    {
+        OnDialogueOptionSelected(new DialogueOptionSelectedPayload(currentSentence, currentSentence.Responses[2].Id));
     }
 }
