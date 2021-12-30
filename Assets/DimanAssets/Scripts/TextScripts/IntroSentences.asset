@@ -15,11 +15,18 @@ MonoBehaviour:
   Sentences:
   - Name: Dave
     Text: 123131321
-    Options:
-    - Id: 0
-      Text: YESSSSS
+    Responses: []
   - Name: You
     Text: ????
-    Options:
+    Responses: []
+  - Name: You
+    Text: '
+
+'
+    Responses:
+    - Id: 0
+      Text: Kek
     - Id: 1
-      Text: Yeah...But
+      Text: Lol
+    - Id: 2
+      Text: Cheburek
