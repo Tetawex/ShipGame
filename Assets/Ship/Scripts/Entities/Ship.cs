@@ -52,6 +52,10 @@ public class Ship
         {
             for (int y = 0; y < ShipParts.GetLength(1); y++)
             {
+                if(ShipParts[x, y] == null)
+                {
+                    continue;
+                }
                 totalHp += ShipParts[x, y].HP;
                 totalRamAD += ShipParts[x, y].RamAD;
                 totalRamAS += ShipParts[x, y].RamAS;

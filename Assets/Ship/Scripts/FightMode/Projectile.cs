@@ -10,12 +10,12 @@ public enum TeamTag
 public class Projectile : MonoBehaviour
 {
     public TeamTag TeamTag;
-    public float Speed = 1f;
+    public float Speed = 5f;
 
     public Rigidbody2D rigidbody2D;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
