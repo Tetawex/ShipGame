@@ -41,8 +41,8 @@ public class FighterShipController : GenericShipController
         ShipStats = Ship.GetShipStats();
         ShipCurrentHP = ShipStats.HP;
 
-        shotInterval = SECOND / ShipStats.ShotAS;
-        ramInterval = SECOND / ShipStats.RamAS;
+        shotInterval = ShipStats.ShotAS > 0 ? SECOND / ShipStats.ShotAS : Mathf.Infinity;
+        ramInterval = ShipStats.RamAS > 0 ? SECOND / ShipStats.RamAS : Mathf.Infinity;
 
         isFighting = true;
         this.enemyTarget = enemyTarget;
@@ -60,12 +60,12 @@ public class FighterShipController : GenericShipController
             elapsedTimeSinceShot += Time.deltaTime;
             elapsedTimeSinceRam += Time.deltaTime;
 
-            if (elapsedTimeSinceShot > shotInterval)
+            if (elapsedTimeSinceShot >= shotInterval)
             {
                 elapsedTimeSinceShot = 0f;
                 EmitProjectile(Instantiate(projectilePrefab, transform.position, Quaternion.identity, transform));
             }
-            if (elapsedTimeSinceRam > ramInterval)
+            if (elapsedTimeSinceRam >= ramInterval)
             {
                 elapsedTimeSinceRam = 0f;
                 EmitProjectile(Instantiate(projectilePrefab, transform.position, Quaternion.identity, transform));

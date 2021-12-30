@@ -53,3 +53,6 @@ TagManager:
   - name: ShipPart
     uniqueID: 2570009663
     locked: 0
+  - name: ShipPartFg
+    uniqueID: 2681477275
+    locked: 0
