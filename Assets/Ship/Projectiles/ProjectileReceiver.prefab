@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4367281014795117537}
   - component: {fileID: 8772396729262799426}
+  - component: {fileID: 2574637323927144182}
   m_Layer: 8
   m_Name: ProjectileReceiver
   m_TagString: Untagged
@@ -47,3 +48,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 1}
   m_Direction: 1
+--- !u!114 &2574637323927144182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628076493278338514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4007343fbd29419418e8297adb870eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
