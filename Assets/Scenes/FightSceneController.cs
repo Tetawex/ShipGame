@@ -22,8 +22,8 @@ public class FightSceneController : MonoBehaviour
 
     void Awake()
     {
-        playerShipController = playerShipGO.GetComponent<FighterShipController>();
-        enemyShipController = enemyShipGO.GetComponent<FighterShipController>();
+        playerShipController = playerShipGO.GetComponentInChildren<FighterShipController>();
+        enemyShipController = enemyShipGO.GetComponentInChildren<FighterShipController>();
     }
 
     void Update()

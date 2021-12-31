@@ -15,8 +15,8 @@ MonoBehaviour:
   hp: 50
   shotAD: 0
   shotAS: 0
-  ramAD: 100
-  ramAS: 100
+  ramAD: 0
+  ramAS: 0.1
   name: Engine
   description: Fast Boi
   Prefab: {fileID: 4331582875661961542, guid: 5cc8bee7a90763c43839e315f31b73ef, type: 3}

@@ -15,8 +15,8 @@ MonoBehaviour:
   hp: 150
   shotAD: 0
   shotAS: 0
-  ramAD: 0
-  ramAS: 0
+  ramAD: 50
+  ramAS: 0.1
   name: Starting Cockpit
   description: Ain't much, but it's free
   Prefab: {fileID: 9088667068514980537, guid: 87235cabe1143d2419a3779e0228781e, type: 3}

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   shotAD: 5
-  shotAS: 5
+  shotAS: 2
   ramAD: 0
   ramAS: 0
   name: 
-  description: 
+  description: Shoots bullets.
   Prefab: {fileID: 2944549758560913653, guid: 8b4d3a1b7ba3c994f9b6b09a6655a92f, type: 3}

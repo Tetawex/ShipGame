@@ -56,3 +56,6 @@ TagManager:
   - name: ShipPartFg
     uniqueID: 2681477275
     locked: 0
+  - name: Projectile
+    uniqueID: 2641199183
+    locked: 0

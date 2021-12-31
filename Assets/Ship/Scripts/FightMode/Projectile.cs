@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     public TeamTag TeamTag;
     public float Speed = 5f;
 
+    public float Damage = 0f;
+
     public Rigidbody2D rigidbody2D;
 
     // Start is called before the first frame update
