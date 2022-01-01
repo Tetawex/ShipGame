@@ -20,11 +20,11 @@ public class ShipStatsDisplayController : MonoBehaviour
     {
         hpText.text = "HP: " + shipStats.HP;
 
-        shotADText.text = "AD: " + shipStats.ShotAD;
-        shotASText.text = "AS: " + shipStats.ShotAS;
+        shotADText.text = "Dmg: " + shipStats.ShotAD;
+        shotASText.text = "Speed: " + shipStats.ShotAS;
 
-        ramADText.text = "AD: " + shipStats.RamAD;
-        ramASText.text = "AS: " + shipStats.RamAS;
+        ramADText.text = "Dmg: " + shipStats.RamAD;
+        ramASText.text = "Speed: " + shipStats.RamAS;
     }
 
     public void DisplayHP(float hp)

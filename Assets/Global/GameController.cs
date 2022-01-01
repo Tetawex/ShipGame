@@ -19,38 +19,58 @@ public class GameController : MonoBehaviour
 
     public GameState currentState;
 
-    public static Ship CurrentShip = null;
+    public Ship CurrentShip = null;
+
+    private List<ShipPart> rewardParts;
 
     public void GoToMainMenu()
     {
-        currentState = GameState.BUILD_MODE;
-        SceneManager.LoadScene(BUILD_SCENE_NAME, LoadSceneMode.Single);
+        LoadScene(MAIN_MENU_NAME);
     }
 
-    public void GoToBuildMode()
+    public void GoToBuildModeInitial()
     {
-        currentState = GameState.BUILD_MODE;
-        SceneManager.LoadScene(BUILD_SCENE_NAME, LoadSceneMode.Single);
+        this.rewardParts = new List<ShipPart>();
+        LoadScene(BUILD_SCENE_NAME);
+    }
+
+    public void GoToBuildModeWithReward(List<ShipPart> rewardParts)
+    {
+        this.rewardParts = rewardParts;
+        LoadScene(BUILD_SCENE_NAME);
     }
 
     public void GoToFightMode(Ship? builtPlayerShip)
     {
         CurrentShip = builtPlayerShip ?? CurrentShip;
-        Debug.Log(builtPlayerShip);
 
-        // currentState = GameState.BUILD_MODE;
-        //CurrentShip =  FindObjectsOfType<BuilderShipController>()[0].BuildShipModel();
+        LoadScene(FIGHT_SCENE_NAME);
+    }
 
+    private void LoadScene(string sceneName)
+    {
         if (currentScene != "")
         {
             SceneManager.UnloadScene(currentScene);
         }
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        currentScene = sceneName;
+    }
 
-        SceneManager.LoadScene(FIGHT_SCENE_NAME, LoadSceneMode.Single);
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.Contains(FIGHT_SCENE_NAME))
+        {
+            FindObjectsOfType<FightSceneController>()[0].StartFight(CurrentShip, CurrentShip);
+        }
+        else if (scene.name.Contains(BUILD_SCENE_NAME))
+        {
+
+        }
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(this);
         Instance = this;
@@ -71,13 +91,5 @@ public class GameController : MonoBehaviour
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name.Contains(FIGHT_SCENE_NAME))
-        {
-                    FindObjectsOfType<FightSceneController>()[0].StartFight(CurrentShip, CurrentShip);
-        }
     }
 }

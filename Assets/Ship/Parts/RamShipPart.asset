@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a113e16426fe49d46b9af1611788c751, type: 3}
-  m_Name: CockpitShipPart
+  m_Name: RamShipPart
   m_EditorClassIdentifier: 
-  hp: 150
+  hp: 50
   shotAD: 0
   shotAS: 0
-  ramAD: 20
-  ramAS: 0.1
-  name: Starting Cockpit
-  description: Ain't much, but it's free
-  Prefab: {fileID: 9088667068514980537, guid: 87235cabe1143d2419a3779e0228781e, type: 3}
+  ramAD: 50
+  ramAS: 0
+  name: 
+  description: 
+  Prefab: {fileID: 4910205133523351513, guid: 19307ebeb36d2924e81a3d6b069e0ad0, type: 3}

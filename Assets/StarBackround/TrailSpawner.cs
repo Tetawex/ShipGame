@@ -4,8 +4,6 @@ using System.Collections;
 
 public class TrailSpawner : MonoBehaviour
 {
-    private Vector2 origin = new Vector2(20f, 10f);
-
     public GameObject tPrefab;
 
     private float elapsedTime = 0f;
@@ -32,7 +30,7 @@ public class TrailSpawner : MonoBehaviour
                 go.transform.localScale.z
             );
 
-            go.transform.position += new Vector3(0f, Random.Range(-10f, 10f), 0f);
+            go.transform.position += new Vector3(0f, Random.Range(-25f, 25f), 0f);
         }
     }
 }

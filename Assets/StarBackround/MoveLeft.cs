@@ -17,7 +17,7 @@ public class MoveLeft : MonoBehaviour
     {
         transform.position += new Vector3(-Time.deltaTime * speed, 0);
 
-        if (transform.position.x < -11f)
+        if (transform.localPosition.x < -90f)
         {
             Destroy(gameObject);
         }

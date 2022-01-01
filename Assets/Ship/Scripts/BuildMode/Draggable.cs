@@ -14,9 +14,12 @@ public class Draggable : MonoBehaviour
     // TODO: Refactor to enum state, add a state for animated snapping
     private bool isDragged = false;
 
+    private Camera camera;
+
     public void Start()
     {
         initialPosition = transform.position;
+        camera = FindObjectOfType<Camera>();
     }
 
     public void OnMouseDrag()
@@ -26,7 +29,7 @@ public class Draggable : MonoBehaviour
             return;
         }
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
     }
 
