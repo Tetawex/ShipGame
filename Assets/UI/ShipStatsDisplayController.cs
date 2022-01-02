@@ -31,13 +31,13 @@ public class ShipStatsDisplayController : MonoBehaviour
 
     public void DisplayShipStats(IBaseShipStats shipStats)
     {
-        hpText.text = "HP: " + shipStats.HP;
+        hpText.text = "HP: " + shipStats.HP.ToString("0.#");
 
-        shotADText.text = "Dmg: " + shipStats.ShotAD;
-        shotASText.text = "Speed: " + shipStats.ShotAS;
+        shotADText.text = "Dmg: " + shipStats.ShotAD.ToString("0.#");
+        shotASText.text = "Speed: " + shipStats.ShotAS.ToString("0.#");
 
-        ramADText.text = "Dmg: " + shipStats.RamAD;
-        ramASText.text = "Speed: " + shipStats.RamAS;
+        ramADText.text = "Dmg: " + shipStats.RamAD.ToString("0.#");
+        ramASText.text = "Speed: " + shipStats.RamAS.ToString("0.#");
     }
 
     public void DisplayName(string name)

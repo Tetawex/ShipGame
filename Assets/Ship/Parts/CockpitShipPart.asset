@@ -15,7 +15,7 @@ MonoBehaviour:
   hp: 150
   shotAD: 0
   shotAS: 0
-  ramAD: 30
+  ramAD: 20
   ramAS: 0.1
   name: Cockpit
   description: Just a cockpit

@@ -15,7 +15,7 @@ MonoBehaviour:
   hp: 50
   shotAD: 0
   shotAS: 0
-  ramAD: 30
+  ramAD: 35
   ramAS: 0
   name: Spiky Ram
   description: Heavy and somewhat sharp
