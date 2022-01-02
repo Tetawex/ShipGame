@@ -888,7 +888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4904566077845878112, guid: e60014eb9225a8143a53765d99b4ae80, type: 3}
       propertyPath: m_Text
-      value: Drag'n'drop the parts onto the grid, or recycle
+      value: Drag'n'drop the parts onto the grid, or discard
       objectReference: {fileID: 0}
     - target: {fileID: 4904566077845878112, guid: e60014eb9225a8143a53765d99b4ae80, type: 3}
       propertyPath: m_FontData.m_LineSpacing

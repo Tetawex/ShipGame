@@ -113,7 +113,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         currentScene = sceneName;
 
-        musicPlayer.PlayClip(sceneName == FIGHT_SCENE_NAME ? musicPlayer.BattleTheme : musicPlayer.MainMenuTheme);
+        musicPlayer.PlayClip((sceneName == FIGHT_SCENE_NAME || sceneName == BUILD_SCENE_NAME) ? musicPlayer.BattleTheme : musicPlayer.MainMenuTheme);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
