@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4904566077845878112, guid: e60014eb9225a8143a53765d99b4ae80, type: 3}
       propertyPath: m_Text
-      value: "Space Junk \nWarriors"
+      value: Space Junkies
       objectReference: {fileID: 0}
     - target: {fileID: 4904566077845878112, guid: e60014eb9225a8143a53765d99b4ae80, type: 3}
       propertyPath: m_FontData.m_FontSize
