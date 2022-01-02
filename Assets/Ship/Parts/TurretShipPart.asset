@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TurretShipPart
   m_EditorClassIdentifier: 
   hp: 25
-  shotAD: 5
+  shotAD: 4
   shotAS: 1
   ramAD: 0
   ramAS: 0
