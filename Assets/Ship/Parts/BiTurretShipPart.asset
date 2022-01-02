@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: BiTurretShipPart
   m_EditorClassIdentifier: 
   hp: 50
-  shotAD: 2
+  shotAD: 5
   shotAS: 2
   ramAD: 0
   ramAS: 0
-  name: 
+  name: Double Turret
   description: Shoots bullets twice as fast
   Prefab: {fileID: 8287882858623555712, guid: ffdf89f6b2446234fa5480e02dba6dd8, type: 3}
+  IsCockpit: 0

@@ -32,7 +32,7 @@ public class GenericShipController : MonoBehaviour
                     var go = ShipPartToGameObject(part, new Vector3(
                         x * ShipConstants.SHIP_PART_SIZE,
                         y * ShipConstants.SHIP_PART_SIZE,
-                        transform.position.z -1f //hack
+                        transform.position.z - 1f //hack
                     ));
                 }
             }
@@ -48,8 +48,10 @@ public class GenericShipController : MonoBehaviour
             {
                 var x = (int)(slot.transform.localPosition.x);
                 var y = (int)(slot.transform.localPosition.y);
-
-                partsArray[x, y] = slot.gameObject.GetComponent<ShipPartHolder>().ShipPart;
+                if (x >= 0 && x < ShipConstants.SHIP_GRID_WIDTH && y >= 0 && y < ShipConstants.SHIP_GRID_HEIGHT)
+                {
+                    partsArray[x, y] = slot.gameObject.GetComponent<ShipPartHolder>().ShipPart;
+                }
             }
         }
 

@@ -52,7 +52,7 @@ public class Ship
         {
             for (int y = 0; y < ShipParts.GetLength(1); y++)
             {
-                if(ShipParts[x, y] == null)
+                if (ShipParts[x, y] == null)
                 {
                     continue;
                 }
@@ -63,6 +63,12 @@ public class Ship
                 totalShotAS += ShipParts[x, y].ShotAS;
             }
         }
+
+        totalHp = totalHp < 0 ? 0f : totalHp;
+        totalShotAD = totalShotAD < 0 ? 0f : totalShotAD;
+        totalShotAS = totalShotAS < 0 ? 0f : totalShotAS;
+        totalRamAD = totalRamAD < 0 ? 0f : totalRamAD;
+        totalRamAS = totalRamAS < 0 ? 0f : totalRamAS;
 
         return new ShipStatsInstance(totalHp, totalShotAD, totalShotAS, totalRamAD, totalRamAS);
     }

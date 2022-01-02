@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityEngine.EventSystems;
 public class DraggableSlot : MonoBehaviour
 {
     private Draggable? attachedDraggable;
+
+    public Action<Draggable> OnDraggedOnto;
 
     public Draggable? GetDraggable()
     {
@@ -28,6 +31,11 @@ public class DraggableSlot : MonoBehaviour
      */
     public bool AttachDraggable(Draggable draggable)
     {
+        if (OnDraggedOnto != null)
+        {
+            OnDraggedOnto(draggable);
+        }
+
         Debug.Log(attachedDraggable);
         if (attachedDraggable != null)
         {
@@ -35,6 +43,7 @@ public class DraggableSlot : MonoBehaviour
         }
 
         attachedDraggable = draggable;
+
         return true;
     }
 

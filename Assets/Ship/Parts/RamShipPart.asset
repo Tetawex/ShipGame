@@ -15,8 +15,9 @@ MonoBehaviour:
   hp: 50
   shotAD: 0
   shotAS: 0
-  ramAD: 50
+  ramAD: 30
   ramAS: 0
-  name: 
-  description: 
+  name: Spiky Ram
+  description: Heavy and somewhat sharp
   Prefab: {fileID: 4910205133523351513, guid: 19307ebeb36d2924e81a3d6b069e0ad0, type: 3}
+  IsCockpit: 0

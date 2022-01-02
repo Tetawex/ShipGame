@@ -30,7 +30,7 @@ public class ShipSceneController : MonoBehaviour
             var item = initialParts[i];
             var go = builderShipController.ShipPartToGameObject(
                 item,
-                new Vector3(1f + (((float)i) * 1.5f), 0f)
+                new Vector3(1f + (((float)i) * 1.5f), -1f)
             );
         }
 

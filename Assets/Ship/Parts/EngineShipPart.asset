@@ -18,5 +18,6 @@ MonoBehaviour:
   ramAD: 0
   ramAS: 0.2
   name: Engine
-  description: Fast Boi
+  description: Fast Boi. Certainly not eco-friendly
   Prefab: {fileID: 4331582875661961542, guid: 5cc8bee7a90763c43839e315f31b73ef, type: 3}
+  IsCockpit: 0

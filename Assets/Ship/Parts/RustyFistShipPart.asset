@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: RustyFistShipPart
   m_EditorClassIdentifier: 
   hp: 30
-  shotAD: 0
+  shotAD: -15
   shotAS: 0
-  ramAD: 70
+  ramAD: 40
   ramAS: 0
-  name: 
-  description: 
+  name: Rusty Fist
+  description: Hits hard, but doesn't play well with turrets
   Prefab: {fileID: 3281911501533951581, guid: b00830439fb1a1d44b6831c6963c2b07, type: 3}
+  IsCockpit: 0

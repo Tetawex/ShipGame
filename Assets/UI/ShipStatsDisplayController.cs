@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ShipStatsDisplayController : MonoBehaviour
 {
     [SerializeField]
+    private Text nameText;
+    [SerializeField]
     private Text hpText;
     [SerializeField]
     private Text shotADText;
@@ -15,6 +17,17 @@ public class ShipStatsDisplayController : MonoBehaviour
     private Text ramADText;
     [SerializeField]
     private Text ramASText;
+
+    public void Awake()
+    {
+        hpText.text = "HP: " + 0;
+
+        shotADText.text = "Dmg: " + 0;
+        shotASText.text = "Speed: " + 0;
+
+        ramADText.text = "Dmg: " + 0;
+        ramASText.text = "Speed: " + 0;
+    }
 
     public void DisplayShipStats(IBaseShipStats shipStats)
     {
@@ -27,8 +40,13 @@ public class ShipStatsDisplayController : MonoBehaviour
         ramASText.text = "Speed: " + shipStats.RamAS;
     }
 
+    public void DisplayName(string name)
+    {
+        nameText.text = name;
+    }
+
     public void DisplayHP(float hp)
     {
-        hpText.text = "HP: " + hp;
+        hpText.text = "HP: " + (hp > 0 ? hp.ToString() : "RIP");
     }
 }

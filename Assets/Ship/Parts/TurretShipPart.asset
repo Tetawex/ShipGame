@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: TurretShipPart
   m_EditorClassIdentifier: 
   hp: 50
-  shotAD: 2
+  shotAD: 5
   shotAS: 1
   ramAD: 0
   ramAS: 0
-  name: 
+  name: Turret
   description: Shoots bullets
   Prefab: {fileID: 2944549758560913653, guid: 8b4d3a1b7ba3c994f9b6b09a6655a92f, type: 3}
+  IsCockpit: 0

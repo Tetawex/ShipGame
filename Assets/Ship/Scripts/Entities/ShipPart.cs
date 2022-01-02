@@ -23,6 +23,9 @@ public class ShipPart : ScriptableObject, IShipPart
     [SerializeField]
     public GameObject Prefab;
 
+    [SerializeField]
+    public bool IsCockpit = false;
+
     public ShipPart() { }
 
     public float HP => hp;

@@ -11,6 +11,9 @@ public class BuilderShipController : GenericShipController
     public GameObject slotPrefab;
 
     [SerializeField]
+    public GameObject trashSlotPrefab;
+
+    [SerializeField]
     public float SlotSize = 1f;
 
     void Start()
@@ -25,7 +28,7 @@ public class BuilderShipController : GenericShipController
 
     private void resetGrid()
     {
-        foreach(DraggableSlot slot in GetComponentsInChildren<DraggableSlot>())
+        foreach (DraggableSlot slot in GetComponentsInChildren<DraggableSlot>())
         {
             Destroy(slot.gameObject);
         }
@@ -47,6 +50,17 @@ public class BuilderShipController : GenericShipController
                 );
             }
         }
+
+        Instantiate(
+                    trashSlotPrefab,
+                    transform.position + new Vector3(
+                       -1.5f,
+                        2f,
+                        1f
+                    ),
+                    Quaternion.identity,
+                    transform
+                );
     }
 
     public override GameObject ShipPartToGameObject(ShipPart part, Vector3 position)
@@ -56,6 +70,7 @@ public class BuilderShipController : GenericShipController
 
         var draggable = instance.AddComponent<Draggable>();
         instance.AddComponent<BuilderPart>();
+        instance.AddComponent<StatsOnMouseEnter>();
         var boxCollider = instance.AddComponent<BoxCollider2D>();
         boxCollider.size = new Vector2(ShipConstants.SHIP_PART_SIZE, ShipConstants.SHIP_PART_SIZE);
 

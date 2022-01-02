@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShipGenerator : MonoBehaviour
@@ -15,6 +16,13 @@ public class ShipGenerator : MonoBehaviour
     [SerializeField]
     private List<ShipPart> other;
 
+    [SerializeField]
+    private ShipPart superTurret;
+    [SerializeField]
+    private ShipPart superRam;
+    [SerializeField]
+    private ShipPart superHull;
+
     public Ship CreateShip(int powerLevel)
     {
         ShipPart[,] parts = new ShipPart[ShipConstants.SHIP_GRID_WIDTH, ShipConstants.SHIP_GRID_HEIGHT];
@@ -28,13 +36,14 @@ public class ShipGenerator : MonoBehaviour
 
         if (isRammer)
         {
+            parts[headX - 1, headY] = PickRandom(other);
+            parts[headX - 2, headY] = PickRandom(engines);
             if (powerLevel > 1)
             {
                 parts[headX, headY - 1] = PickRandom(rams);
-                parts[headX - 1, headY - 1] = PickRandom(other);
-                parts[headX - 1, headY] = PickRandom(engines);
+                parts[headX - 1, headY] = PickRandom(other);
             }
-            if (powerLevel > 3)
+            if (powerLevel > 5)
             {
                 parts[headX, headY + 1] = PickRandom(rams);
 
@@ -44,19 +53,74 @@ public class ShipGenerator : MonoBehaviour
                 parts[headX - 2, headY + 1] = PickRandom(engines);
                 parts[headX - 2, headY - 1] = PickRandom(engines);
             }
+            if (powerLevel > 7)
+            {
+                parts[headX, headY + 1] = PickRandom(rams);
+
+                parts[headX - 2, headY - 1] = PickRandom(turrets);
+                parts[headX - 2, headY + 1] = PickRandom(other);
+                parts[headX - 2, headY] = PickRandom(other);
+
+                parts[headX - 3, headY + 1] = PickRandom(engines);
+                parts[headX - 3, headY - 1] = PickRandom(engines);
+            }
+            if (powerLevel > 9)
+            {
+                parts[headX - 4, headY + 1] = PickRandom(engines);
+                parts[headX - 4, headY - 1] = PickRandom(rams);
+                parts[headX - 4, headY] = PickRandom(engines);
+                parts[headX - 3, headY] = PickRandom(rams);
+            }
+            if (powerLevel > 12)
+            {
+                parts[headX - 4, headY + 1] = superHull;
+                parts[headX - 4, headY - 1] = superHull;
+                parts[headX - 4, headY - 1] = superRam;
+                parts[headX - 3, headY] = superRam;
+            }
         }
         else
         {
+            parts[headX - 1, headY] = PickRandom(turrets);
+            parts[headX - 2, headY] = PickRandom(engines);
             if (powerLevel > 1)
             {
                 parts[headX - 1, headY - 1] = PickRandom(turrets);
                 parts[headX - 1, headY - 1] = PickRandom(other);
+                parts[headX - 2, headY] = PickRandom(engines);
             }
-            if (powerLevel > 3)
+            if (powerLevel > 5)
             {
-                parts[headX, headY + 1] = PickRandom(rams);
                 parts[headX - 1, headY + 1] = PickRandom(other);
                 parts[headX - 1, headY] = PickRandom(other);
+
+                parts[headX - 2, headY + 1] = PickRandom(turrets);
+                parts[headX - 2, headY - 1] = PickRandom(engines);
+            }
+            if (powerLevel > 7)
+            {
+                parts[headX, headY + 1] = PickRandom(other);
+
+                parts[headX - 2, headY - 1] = PickRandom(turrets);
+                parts[headX - 2, headY + 1] = PickRandom(other);
+                parts[headX - 2, headY] = PickRandom(other);
+
+                parts[headX - 3, headY + 1] = PickRandom(turrets);
+                parts[headX - 3, headY - 1] = PickRandom(turrets);
+            }
+            if (powerLevel > 9)
+            {
+                parts[headX - 4, headY + 1] = PickRandom(other);
+                parts[headX - 4, headY - 1] = PickRandom(other);
+                parts[headX - 4, headY] = PickRandom(turrets);
+                parts[headX - 3, headY] = PickRandom(turrets);
+            }
+            if (powerLevel > 14)
+            {
+                parts[headX - 4, headY + 1] = superHull;
+                parts[headX - 4, headY - 1] = superHull;
+                parts[headX - 4, headY] = superTurret;
+                parts[headX - 3, headY] = superTurret;
             }
         }
 
@@ -72,6 +136,32 @@ public class ShipGenerator : MonoBehaviour
     }
 
 
+    public ShipPart GetRandomPart()
+    {
+        var allList = new List<ShipPart>();
+
+        allList.AddRange(engines);
+        allList.AddRange(turrets);
+        allList.AddRange(rams);
+        allList.AddRange(other);
+
+        return PickRandom(allList);
+    }
+
+    public ShipPart GetRandomTurret()
+    {
+        return PickRandom(turrets);
+    }
+
+    public ShipPart GetRandomRam()
+    {
+        return PickRandom(rams);
+    }
+
+    public ShipPart GetRandomEngine()
+    {
+        return PickRandom(engines);
+    }
 
     public static T PickRandom<T>(IList<T> source)
     {

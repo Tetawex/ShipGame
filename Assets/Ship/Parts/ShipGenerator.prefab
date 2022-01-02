@@ -44,14 +44,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cockpits:
-  - {fileID: 0}
-  engines:
   - {fileID: 11400000, guid: 24f92e3733061474a972318a737596a8, type: 2}
+  engines:
+  - {fileID: 11400000, guid: b5cc0b0f1f627594e80555c19ecd152a, type: 2}
+  - {fileID: 11400000, guid: 06866d28e7b485147a408223a66de520, type: 2}
   turrets:
-  - {fileID: 11400000, guid: 4c02027cda689844aba6be4e44523c83, type: 2}
   - {fileID: 11400000, guid: 60014034bb708514f83147cb280092f3, type: 2}
+  - {fileID: 11400000, guid: 60014034bb708514f83147cb280092f3, type: 2}
+  - {fileID: 11400000, guid: 60014034bb708514f83147cb280092f3, type: 2}
+  - {fileID: 11400000, guid: 4c02027cda689844aba6be4e44523c83, type: 2}
+  - {fileID: 11400000, guid: ae64e807fc1276e41840975fc244556f, type: 2}
+  - {fileID: 11400000, guid: 2f5d6b7360c52cb449f48b6d4fc546bd, type: 2}
   rams:
-  - {fileID: 11400000, guid: 92acebec610939a4ba70779207fc4049, type: 2}
   - {fileID: 11400000, guid: 871fe9abd78754e45952a15fc252751a, type: 2}
+  - {fileID: 11400000, guid: 871fe9abd78754e45952a15fc252751a, type: 2}
+  - {fileID: 11400000, guid: 871fe9abd78754e45952a15fc252751a, type: 2}
+  - {fileID: 11400000, guid: 92acebec610939a4ba70779207fc4049, type: 2}
+  - {fileID: 11400000, guid: d3927d57225321c48bddb6492b017ea1, type: 2}
   other:
   - {fileID: 11400000, guid: b2113cda4443a3d4eb3544c0a430b527, type: 2}
+  - {fileID: 11400000, guid: b2113cda4443a3d4eb3544c0a430b527, type: 2}
+  - {fileID: 11400000, guid: a99043d713899d841af2d0642728621f, type: 2}
+  - {fileID: 11400000, guid: 82779cad3e2b99c43aabb4c6f61053e2, type: 2}
+  - {fileID: 11400000, guid: 82779cad3e2b99c43aabb4c6f61053e2, type: 2}
+  superTurret: {fileID: 11400000, guid: 0ede72200902d3c499f1b526ac58be36, type: 2}
+  superRam: {fileID: 11400000, guid: 8a45bd2d7c36eac48b974ecaed46ae87, type: 2}
+  superHull: {fileID: 11400000, guid: 420df4f846c2d704f90c0e0a1be5eb5f, type: 2}

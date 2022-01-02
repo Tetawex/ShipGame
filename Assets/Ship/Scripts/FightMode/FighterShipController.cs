@@ -38,7 +38,7 @@ public class FighterShipController : GenericShipController
 
     [SerializeField]
     public TeamTag TeamTag = TeamTag.PLAYER;
-    void Start()
+    void Awake()
     {
         projectileReceiver = GetComponentInChildren<ProjectileReceiver>();
         projectileReceiver.OnProjectileReceived += HandleProjectileReceived;
@@ -58,13 +58,15 @@ public class FighterShipController : GenericShipController
         ShipStats = Ship.GetShipStats();
         ShipCurrentHP = ShipStats.HP;
 
-        shotInterval = ShipStats.ShotAS > 0 ? SECOND / ShipStats.ShotAS : Mathf.Infinity;
-        ramInterval = ShipStats.RamAS > 0 ? SECOND / ShipStats.RamAS : Mathf.Infinity;
+        shotInterval = (ShipStats.ShotAS > 0 && ShipStats.ShotAD > 0) ? SECOND / ShipStats.ShotAS : Mathf.Infinity;
+        ramInterval = (ShipStats.RamAS > 0 && ShipStats.RamAD > 0) ? SECOND / ShipStats.RamAS : Mathf.Infinity;
 
         isFighting = true;
         this.enemyTarget = enemyTarget;
 
         shipStatsDisplayController.DisplayShipStats(ShipStats);
+
+        parentAnimator.speed = 1.5f * ShipStats.RamAS;
     }
 
     public void StopFight()
@@ -88,7 +90,7 @@ public class FighterShipController : GenericShipController
         ShipCurrentHP -= damage;
         shipStatsDisplayController.DisplayHP(ShipCurrentHP);
 
-        if (ShipCurrentHP <= 0 && !isFighting)
+        if (ShipCurrentHP <= 0 && isFighting)
         {
             Debug.Log("Boom");
             shipAudioPlayer.PlayDeath();

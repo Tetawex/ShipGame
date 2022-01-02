@@ -18,6 +18,5 @@ MonoBehaviour:
   ramAD: 0
   ramAS: 0
   name: Hull
-  description: That thing was too big to be called a ship part. Too big, too thick,
-    too heavy, and too rough, it's more like a large hunk of iron...
+  description: Basic ship casing
   Prefab: {fileID: 8124993510742796135, guid: 64fdfe2f67d4d2a4385ff988a9307b04, type: 3}

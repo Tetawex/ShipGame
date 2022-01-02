@@ -43,9 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8aaa84845242d644bf8ec112c3956e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 5
-  Height: 3
+  draggableMutex: {fileID: 0}
   slotPrefab: {fileID: 5310741817507890346, guid: 61d3e36a90576424b86a16cb6f283b49, type: 3}
+  trashSlotPrefab: {fileID: 1488214869922839895, guid: 5d0cb1faddd8109468f81b91a5764666, type: 3}
   SlotSize: 1
-  shipPartWrapperPrefab: {fileID: 8854916720067899102, guid: 2505ca7bebdd90b4a92ccc65f333b3e9, type: 3}
-  shipInstance: {fileID: 0}
