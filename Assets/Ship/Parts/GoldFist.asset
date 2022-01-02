@@ -15,7 +15,7 @@ MonoBehaviour:
   hp: 100
   shotAD: -30
   shotAS: 0
-  ramAD: 150
+  ramAD: 100
   ramAS: 0
   name: Gold Fist
   description: Made of solid gold. Doesn't play well with turrets

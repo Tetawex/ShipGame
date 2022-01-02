@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   shotAD: 5
-  shotAS: 4
+  shotAS: 3
   ramAD: 0
   ramAS: 0
   name: Omni Turret

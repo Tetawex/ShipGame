@@ -75,12 +75,15 @@ public class ShipGenerator : MonoBehaviour
                 parts[headX - 4, headY] = PickRandom(engines);
                 parts[headX - 3, headY] = PickRandom(rams);
             }
-            if (powerLevel > 12)
+            if (powerLevel > 13)
             {
                 parts[headX - 4, headY + 1] = superHull;
+                parts[headX - 3, headY] = superRam;
+            }
+            if (powerLevel > 15)
+            {
                 parts[headX - 4, headY - 1] = superHull;
                 parts[headX - 4, headY - 1] = superRam;
-                parts[headX - 3, headY] = superRam;
             }
         }
         else
@@ -131,12 +134,15 @@ public class ShipGenerator : MonoBehaviour
                 parts[headX - 4, headY] = PickRandom(turrets);
                 parts[headX - 3, headY] = PickRandom(turrets);
             }
-            if (powerLevel > 14)
+            if (powerLevel > 13)
             {
                 parts[headX - 4, headY + 1] = superHull;
+                parts[headX - 3, headY] = superTurret;
+            }
+            if (powerLevel > 15)
+            {
                 parts[headX - 4, headY - 1] = superHull;
                 parts[headX - 4, headY] = superTurret;
-                parts[headX - 3, headY] = superTurret;
             }
         }
 
